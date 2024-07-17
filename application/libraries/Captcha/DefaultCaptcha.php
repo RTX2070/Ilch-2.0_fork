@@ -59,22 +59,23 @@ class DefaultCaptcha
      */
     public function getCaptcha(View $view): string
     {
-        return '<div class="row mb-15' . ($view->validation()->hasError('captcha') ? ' has-error' : '') . '">
-            <label class="col-xl-2 col-form-label">
+        return '<div class="row mb-3' . ($view->validation()->hasError('captcha') ? ' has-error' : '') . '">
+            <label for="captcha-form" class="col col-form-label">
                 ' . $view->getTrans('captcha') . '
             </label>
+            </div>
             <div class="col-xl-8">
                 ' . $view->getCaptchaField() . '
             </div>
         </div>
-        <div class="row mb-15'. ($view->validation()->hasError('captcha') ? ' has-error' : '') . '">
-            <div class="offset-xl-2 col-xl-8 input-group captcha">
+        <div class="row mb-3'. ($view->validation()->hasError('captcha') ? ' has-error' : '') . '">
+            <div class="col-xl-8 input-group captcha">
                 <input type="text"
                        class="form-control"
                        id="captcha-form"
                        name="captcha"
                        autocomplete="off"
-                       placeholder="' . $view->getTrans('captcha') . '" />
+                        />
                 <span class="input-group-text">
                     <a href="javascript:void(0)" onclick="
                         document.getElementById(\'captcha\').src=\'' . $view->getUrl() . '/application/libraries/Captcha/Captcha.php?\'+Math.random();
